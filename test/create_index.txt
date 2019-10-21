@@ -1,0 +1,442 @@
+{
+    "stpc_wood_info": {
+        "aliases": {},
+        "mappings": {
+            "doc": {
+                "properties": {
+                    "@timestamp": {
+                        "type": "date"
+                    },
+                    "@version": {
+                        "type": "text",
+                        "fields": {
+                            "keyword": {
+                                "type": "keyword",
+                                "ignore_above": 256
+                            }
+                        }
+                    },
+                    "area_type": {
+                        "type": "long"
+                    },
+                    "contact_image": {
+                        "type": "text",
+                        "fields": {
+                            "keyword": {
+                                "type": "keyword",
+                                "ignore_above": 256
+                            }
+                        }
+                    },
+                    "contact_mobile": {
+                        "type": "text",
+                        "fields": {
+                            "keyword": {
+                                "type": "keyword",
+                                "ignore_above": 256
+                            }
+                        }
+                    },
+                    "contact_name": {
+                        "type": "text",
+                        "fields": {
+                            "keyword": {
+                                "type": "keyword",
+                                "ignore_above": 256
+                            }
+                        }
+                    },
+                    "create_t": {
+                        "type": "date"
+                    },
+                    "desc": {
+                        "type": "text",
+                        "fields": {
+                            "pinyin": {
+                                "type": "text",
+                                "boost": 8,
+                                "term_vector": "with_positions_offsets",
+                                "analyzer": "pinyin_analyzer"
+                            }
+                        },
+                        "analyzer": "ik_max_word"
+                    },
+                    "id": {
+                        "type": "long"
+                    },
+                    "is_collage": {
+                        "type": "boolean"
+                    },
+                    "is_stick": {
+                        "type": "long"
+                    },
+                    "mobile_phone": {
+                        "type": "text",
+                        "fields": {
+                            "keyword": {
+                                "type": "keyword",
+                                "ignore_above": 256
+                            }
+                        }
+                    },
+                    "price": {
+                        "type": "long"
+                    },
+                    "price_between": {
+                        "type": "text",
+                        "fields": {
+                            "keyword": {
+                                "type": "keyword",
+                                "ignore_above": 256
+                            }
+                        }
+                    },
+                    "sell_area": {
+                        "type": "text",
+                        "fields": {
+                            "pinyin": {
+                                "type": "text",
+                                "boost": 5,
+                                "term_vector": "with_positions_offsets",
+                                "analyzer": "pinyin_analyzer"
+                            }
+                        },
+                        "analyzer": "ik_max_word"
+                    },
+                    "status": {
+                        "type": "boolean"
+                    },
+                    "type": {
+                        "type": "long"
+                    },
+                    "type_id": {
+                        "type": "long"
+                    },
+                    "unit": {
+                        "type": "long"
+                    },
+                    "update_t": {
+                        "type": "date"
+                    },
+                    "update_time": {
+                        "type": "long"
+                    },
+                    "user_id": {
+                        "type": "long"
+                    },
+                    "username": {
+                        "type": "text",
+                        "fields": {
+                            "pinyin": {
+                                "type": "text",
+                                "boost": 3,
+                                "term_vector": "with_positions_offsets",
+                                "analyzer": "pinyin_analyzer"
+                            }
+                        },
+                        "analyzer": "ik_max_word"
+                    },
+                    "video_src": {
+                        "type": "text",
+                        "fields": {
+                            "keyword": {
+                                "type": "keyword",
+                                "ignore_above": 256
+                            }
+                        }
+                    },
+                    "view_cnt": {
+                        "type": "long"
+                    },
+                    "wood_area": {
+                        "type": "text",
+                        "fields": {
+                            "pinyin": {
+                                "type": "text",
+                                "boost": 5,
+                                "term_vector": "with_positions_offsets",
+                                "analyzer": "pinyin_analyzer"
+                            }
+                        },
+                        "analyzer": "ik_max_word"
+                    },
+                    "wood_count": {
+                        "type": "text",
+                        "fields": {
+                            "keyword": {
+                                "type": "keyword",
+                                "ignore_above": 256
+                            }
+                        }
+                    },
+                    "wood_name": {
+                        "type": "text",
+						 "fields": {
+                            "pinyin": {
+                                "type": "text",
+                                "boost": 10,
+                                "term_vector": "with_positions_offsets",
+                                "analyzer": "pinyin_analyzer"
+                            },
+							"suggest" : {
+							  "type" : "completion",
+							  "analyzer": "ik_max_word"
+							}
+                        },
+                        "analyzer": "ik_max_word"
+                    },
+                    "wood_spec": {
+                        "type": "text",
+                        "fields": {
+                            "keyword": {
+                                "type": "keyword",
+                                "ignore_above": 256
+                            }
+                        }
+                    }
+                }
+            }
+        },
+		
+  		"settings": {
+			"number_of_shards": 3,
+			"number_of_replicas": 1,
+			"analysis": {
+				"analyzer": {
+					"default": {
+						"tokenizer": "ik_max_word"
+					},
+					"pinyin_analyzer": {
+						"type": "custom",
+						"tokenizer": "my_pinyin",
+						"filter": [
+							"word_delimiter"
+						]
+					}
+				},
+				"tokenizer": {
+					"my_pinyin": {
+						"type": "pinyin",
+						"keep_first_letter": true,
+						"keep_separate_first_letter": false,
+						"keep_full_pinyin": true,
+						"keep_original": false,
+						"limit_first_letter_length": 16,
+						"lowercase": true
+					}
+				}
+			}
+		}
+    }
+}
+
+
+
+
+
+
+
+
+
+{
+    "stpc_want_order_main": {
+        "aliases": {},
+        "mappings": {
+            "doc": {
+                "properties": {
+                    "@timestamp": {
+                        "type": "date"
+                    },
+                    "@version": {
+                        "type": "text",
+                        "fields": {
+                            "keyword": {
+                                "type": "keyword",
+                                "ignore_above": 256
+                            }
+                        }
+                    },
+                    "contact_img": {
+                        "type": "text",
+                        "fields": {
+                            "keyword": {
+                                "type": "keyword",
+                                "ignore_above": 256
+                            }
+                        }
+                    },
+                    "contact_name": {
+                        "type": "text",
+                        "fields": {
+                            "keyword": {
+                                "type": "keyword",
+                                "ignore_above": 256
+                            }
+                        }
+                    },
+                    "contact_phone": {
+                        "type": "text",
+                        "fields": {
+                            "keyword": {
+                                "type": "keyword",
+                                "ignore_above": 256
+                            }
+                        }
+                    },
+                    "create_t": {
+                        "type": "date"
+                    },
+                    "id": {
+                        "type": "long"
+                    },
+                    "image": {
+                        "type": "text",
+                        "fields": {
+                            "keyword": {
+                                "type": "keyword",
+                                "ignore_above": 256
+                            }
+                        }
+                    },
+                    "mobile_phone": {
+                        "type": "text",
+                        "fields": {
+                            "keyword": {
+                                "type": "keyword",
+                                "ignore_above": 256
+                            }
+                        }
+                    },
+                    "order_no": {
+                        "type": "text",
+                        "fields": {
+                            "keyword": {
+                                "type": "keyword",
+                                "ignore_above": 256
+                            }
+                        }
+                    },
+                    "remark": {
+                        "type": "text",
+                        "fields": {
+                            "keyword": {
+                                "type": "keyword",
+                                "ignore_above": 256
+                            }
+                        }
+                    },
+                    "sell_area": {
+                        "type": "text",
+                        "fields": {
+                            "keyword": {
+                                "type": "keyword",
+                                "ignore_above": 256
+                            }
+                        }
+                    },
+                    "spec": {
+                        "type": "text",
+                        "fields": {
+                            "keyword": {
+                                "type": "keyword",
+                                "ignore_above": 256
+                            }
+                        }
+                    },
+                    "status": {
+                        "type": "boolean"
+                    },
+                    "type": {
+                        "type": "long"
+                    },
+                    "type_id": {
+                        "type": "long"
+                    },
+                    "update_t": {
+                        "type": "date"
+                    },
+                    "update_time": {
+                        "type": "long"
+                    },
+                    "user_id": {
+                        "type": "long"
+                    },
+                    "username": {
+                        "type": "text",
+                        "fields": {
+                            "pinyin": {
+                                "type": "text",
+                                "boost": 3,
+                                "term_vector": "with_positions_offsets",
+                                "analyzer": "pinyin_analyzer"
+                            }
+                        },
+                        "analyzer": "ik_max_word"
+                    },
+                    "view_cnt": {
+                        "type": "long"
+                    },
+                    "wood_area": {
+                        "type": "text",
+                        "fields": {
+                            "pinyin": {
+                                "type": "text",
+                                "boost": 5,
+                                "term_vector": "with_positions_offsets",
+                                "analyzer": "pinyin_analyzer"
+                            }
+                        },
+                        "analyzer": "ik_max_word"
+                    },
+                    "wood_name": {
+                        "type": "text",
+                        "fields": {
+                            "pinyin": {
+                                "type": "text",
+                                "boost": 10,
+                                "term_vector": "with_positions_offsets",
+                                "analyzer": "pinyin_analyzer"
+                            },
+							"suggest" : {
+							  "type" : "completion",
+							  "analyzer": "ik_max_word"
+							}
+                        },
+                        "analyzer": "ik_max_word"
+                    },
+                    "wood_type": {
+                        "type": "long"
+                    }
+                }
+            }
+        },
+		"settings": {
+			"number_of_shards": 3,
+			"number_of_replicas": 1,
+			"analysis": {
+				"analyzer": {
+					"default": {
+						"tokenizer": "ik_max_word"
+					},
+					"pinyin_analyzer": {
+						"type": "custom",
+						"tokenizer": "my_pinyin",
+						"filter": [
+							"word_delimiter"
+						]
+					}
+				},
+				"tokenizer": {
+					"my_pinyin": {
+						"type": "pinyin",
+						"keep_first_letter": true,
+						"keep_separate_first_letter": false,
+						"keep_full_pinyin": true,
+						"keep_original": false,
+						"limit_first_letter_length": 16,
+						"lowercase": true
+					}
+				}
+			}
+		}
+}

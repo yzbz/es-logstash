@@ -1,0 +1,17 @@
+es:
+  image: elasticsearch:v1.3
+  ports:
+   - 9200:9200
+   - 9300:9300
+  volumes:
+   - /wwwroot/zmw/esdata:/localroot
+logstash:
+   image: logstash:v1.1
+   ports:
+     - 5044:5044
+     - 9600:9600
+   volumes:
+     - /wwwroot/zmw/logstashconf:/usr/share/logstash/config
+     - /wwwroot/zmw/logstashdata:/usr/share/logstash/data:rw
+     - /wwwroot/zmw/pipeline:/usr/share/logstash/pipeline
+
